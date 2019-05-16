@@ -83,6 +83,9 @@ public class AdjustIntegration extends Integration<AdjustInstance> {
         break;
     }
     adjust.onCreate(adjustConfig);
+    
+    // Needed since Cordova does not pass on the onResume callback on start (https://github.com/adjust/cordova_sdk/blob/master/src/android/AdjustCordova.java#L366)
+    adjust.onResume();
   }
 
   private void setPartnerParams(BasePayload payload) {
